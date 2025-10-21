@@ -1,0 +1,21 @@
+#Cadeias de comprimento múltiplo de 3
+def valida_cadeia(cadeia: str) -> bool:
+    estado = 0  #estadoinicial
+
+    for simbolo in cadeia:
+        if simbolo not in ['a', 'b', 'c']:
+            return False  # rejeita simbolo invalido
+        if estado == 0:
+            estado = 1
+        elif estado == 1:
+            estado = 2
+        elif estado == 2:
+            estado = 0
+
+    return estado == 0  # aceita se terminou no estado q0
+
+cadeia = input("Digite uma cadeia (usando apenas a, b ou c): ")
+if valida_cadeia(cadeia):
+    print("ACEITA (comprimento múltiplo de 3)")
+else:
+    print("REJEITA (não é múltiplo de 3 )")
