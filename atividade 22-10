@@ -1,0 +1,30 @@
+
+#Principal função: verifica se a cadeia tem tamanho multiplo de 3 
+#na linha 2 eu defino a função que recebe uma cadeia e se retorna true ou false.
+#na linha 3 eu inicializo no estado 0.
+#da linha 5 a 7 ele percorre a cadeia e se nao tiver uma letra da cadeia ela rejeita com false.
+#da linha 8 a 13 ele controla o estado o codigo com cada simbolo lido, a logica é se está q0 ele passa para q1, q1 para q2 e q2 ele retorna para q0.
+#linha 15 retorna true se for estado q0, ou seja se a cadeia for multipla de 3
+#a linha 17 é apenas para usuario digitar a cadeia
+#e a linh 18 a 21 apenas para imprimir o resultado.
+#Cadeias de comprimento múltiplo de 3
+def valida_cadeia(cadeia: str) -> bool:
+    estado = 0  #estadoinicial
+
+    for simbolo in cadeia:
+        if simbolo not in ['a', 'b', 'c']:
+            return False  # rejeita simbolo invalido
+        if estado == 0:
+            estado = 1
+        elif estado == 1:
+            estado = 2
+        elif estado == 2:
+            estado = 0
+
+    return estado == 0  # aceita se terminou no estado q0
+
+cadeia = input("Digite uma cadeia (usando apenas a, b ou c): ")
+if valida_cadeia(cadeia):
+    print("ACEITA (comprimento múltiplo de 3)")
+else:
+    print("REJEITA (não é múltiplo de 3 )")
